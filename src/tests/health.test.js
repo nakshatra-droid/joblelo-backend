@@ -9,4 +9,9 @@ describe("Healthcheck API", () => {
     expect(res.body).toHaveProperty("status", "ok");
     expect(res.body).toHaveProperty("message", "Joblelo backend is running");
   });
+
+  it("should return 404 Not Found for a non-existent route", async () => {
+    const res = await request(app).get("/api/non-existent-route");
+    expect(res.statusCode).toBe(404);
+  });
 });
