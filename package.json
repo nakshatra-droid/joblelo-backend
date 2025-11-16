@@ -1,0 +1,38 @@
+{
+  "name": "joblelo-backend",
+  "version": "1.0.0",
+  "description": "This is the backend of joblelo project",
+  "homepage": "https://github.com/nakshatra-droid/joblelo-backend#readme",
+  "bugs": {
+    "url": "https://github.com/nakshatra-droid/joblelo-backend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nakshatra-droid/joblelo-backend.git"
+  },
+  "license": "ISC",
+  "author": "Nakshatra",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.28.5",
+    "babel-jest": "^30.2.0",
+    "jest": "^30.2.0",
+    "nodemon": "^3.1.11",
+    "supertest": "^7.1.4"
+  }
+}
