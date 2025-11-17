@@ -20,6 +20,12 @@ export default (sequelize, DataTypes) => {
       tableName: "jobs",
       timestamps: true,
       underscored: true,
+      indexes: [
+        { fields: ["company_id"] },
+        { fields: ["created_by"] },
+        { fields: ["title"] },
+        { fields: ["location"] }
+      ]
     }
   );
   Job.associate = (models) => {

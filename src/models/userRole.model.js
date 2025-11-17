@@ -10,6 +10,10 @@ export default (sequelize, DataTypes) => {
       tableName: "user_roles",
       timestamps: true,
       underscored: true,
+      indexes: [
+        { fields: ["user_id"] },
+        { fields: ["role_id"] }
+      ]
     }
   );
   UserRole.associate = (models) => {

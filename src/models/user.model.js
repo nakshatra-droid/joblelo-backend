@@ -21,6 +21,9 @@ export default (sequelize, DataTypes) => {
       tableName: "users",
       timestamps: true,
       underscored: true,
+      indexes: [
+        { unique: true, fields: ["email"] },
+      ],
       hooks: {
         beforeCreate: async (user) => {
           if (user.password) {

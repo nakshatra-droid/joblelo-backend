@@ -10,6 +10,10 @@ export default (sequelize, DataTypes) => {
       tableName: "company_user",
       timestamps: true,
       underscored: true,
+      indexes: [
+        { fields: ["user_id"] },
+        { fields: ["company_id"] }
+      ]
     }
   );
 

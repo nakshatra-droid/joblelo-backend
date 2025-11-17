@@ -14,6 +14,11 @@ export default (sequelize, DataTypes) => {
       tableName: "applications",
       timestamps: true,
       underscored: true,
+      indexes: [
+        { fields: ["job_id"] },
+        { fields: ["job_seeker_id"] },
+        { fields: ["status"] }
+      ]
     }
   );
 

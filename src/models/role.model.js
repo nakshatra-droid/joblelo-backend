@@ -8,6 +8,9 @@ export default (sequelize, DataTypes) => {
     {
       tableName: "roles",
       timestamps: false,
+      indexes: [
+        { fields: ["name"] }
+      ]
     }
   );
   Role.associate = (models) => {
