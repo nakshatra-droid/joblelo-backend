@@ -1,3 +1,5 @@
+import { APPLICATION_STATUS } from "../config/constants.js";
+
 export default (sequelize, DataTypes) => {
   const Application = sequelize.define(
     "Application",
@@ -6,7 +8,7 @@ export default (sequelize, DataTypes) => {
       job_id: { type: DataTypes.INTEGER, allowNull: false },
       job_seeker_id: { type: DataTypes.INTEGER, allowNull: false },
       status: {
-        type: DataTypes.ENUM("applied", "selected", "rejected"),
+        type: DataTypes.ENUM(...APPLICATION_STATUS),
         defaultValue: "applied",
       },
     },

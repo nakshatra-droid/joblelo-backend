@@ -1,3 +1,4 @@
+import { JOB_TYPES } from "../config/constants.js";
 export default (sequelize, DataTypes) => {
   const Job = sequelize.define(
     "Job",
@@ -12,7 +13,7 @@ export default (sequelize, DataTypes) => {
       location: { type: DataTypes.STRING, allowNull: true },
 
       job_type: {
-        type: DataTypes.ENUM("full-time", "part-time", "contract", "internship"),
+        type: DataTypes.ENUM(...JOB_TYPES),
         defaultValue: "full-time",
       },
     },
