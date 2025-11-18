@@ -7,7 +7,10 @@ const app = express();
 
 app.use(
     cors({
-        origin: "http://localhost:5173",
+        origin: function (origin, callback) {
+            if (!origin) return callback(null, true);
+            return callback(null, true);
+        },
         credentials: true,
         methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
         allowedHeaders: ["Content-Type", "Authorization"],

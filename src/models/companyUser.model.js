@@ -3,6 +3,7 @@ export default (sequelize, DataTypes) => {
     "CompanyUser",
     {
       id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+
       company_id: { type: DataTypes.INTEGER, allowNull: false },
       user_id: { type: DataTypes.INTEGER, allowNull: false },
     },
@@ -10,10 +11,14 @@ export default (sequelize, DataTypes) => {
       tableName: "company_user",
       timestamps: true,
       underscored: true,
+      paranoid: true,
+      deletedAt: "deleted_at",
+
       indexes: [
         { fields: ["user_id"] },
-        { fields: ["company_id"] }
-      ]
+        { fields: ["company_id"] },
+        { unique: true, fields: ["company_id", "user_id"] },
+      ],
     }
   );
 
