@@ -129,5 +129,8 @@ vite.config.ts.timestamp-*
 # Gitignore
 .gitignore
 
+#DS_Store
+.DS_Store 
+*.DS_Store
 #Package-lock.json
 package-lock.json
