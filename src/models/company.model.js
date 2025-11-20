@@ -3,7 +3,6 @@ export default (sequelize, DataTypes) => {
     "Company",
     {
       id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-
       name: { type: DataTypes.STRING, allowNull: false },
     },
     {
@@ -12,11 +11,11 @@ export default (sequelize, DataTypes) => {
       underscored: true,
       paranoid: true,
       deletedAt: "deleted_at",
-
-      indexes: [{ fields: ["name"] }],
+      indexes: [
+        { fields: ["name"] }
+      ]
     }
   );
-
   Company.associate = (models) => {
     Company.hasMany(models.Job, { foreignKey: "company_id" });
     Company.hasMany(models.CompanyUser, { foreignKey: "company_id" });

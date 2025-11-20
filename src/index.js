@@ -3,7 +3,7 @@ dotenv.config();
 import app from "./app.js";
 import db from "./models/index.js";
 
-const PORT = process.env.PORT|| 5001 ;
+const PORT = process.env.PORT || 5001;
 
 async function start() {
   try {
@@ -11,7 +11,7 @@ async function start() {
     console.log("Database synced successfully");
 
     app.listen(PORT, () => {
-      console.log(`Server running at http://localhost:${PORT}`);
+      console.log(`Server running at ${PORT}`);
     });
   } catch (err) {
     console.error("Failed to start server:", err);
