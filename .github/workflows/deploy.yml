@@ -1,0 +1,43 @@
+name: Deploy Backend to EC2
+
+on:
+  push:
+    branches: ["feature/deploy-setup"]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      NODE_ENV: test   
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6.0.0
+
+      - name: Setup Node
+        uses: actions/setup-node@v6.0.0
+        with:
+          node-version: 25
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Run tests
+        run: npm test    
+
+      - name: Deploy to EC2 instance
+        uses: appleboy/ssh-action@v1.2.3
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          port: 22
+          script: |
+            cd ${{ secrets.TARGET_APP_PATH }}
+            git fetch --all
+            git reset --hard origin/feature/deploy-setup
+            npm ci --omit=dev
+            pm2 restart joblelo-backend || pm2 start npm --name "joblelo-backend" -- start
+            pm2 save

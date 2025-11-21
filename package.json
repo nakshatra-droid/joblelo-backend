@@ -17,12 +17,14 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon --watch src --exec node src/index.js",
-    "test": "jest"
+    "test": "NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "jest": {
     "testEnvironment": "node",
-    "transform": {
-      "^.+\\.jsx?$": "babel-jest"
+    "transform": {},
+    "setupFiles": [],
+    "moduleNameMapper": {
+      "^../src/models$": "<rootDir>/__mocks__/models.js"
     }
   },
   "dependencies": {
