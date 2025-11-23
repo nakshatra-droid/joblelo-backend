@@ -21,11 +21,7 @@
   },
   "jest": {
     "testEnvironment": "node",
-    "transform": {},
-    "setupFiles": [],
-    "moduleNameMapper": {
-      "^../src/models$": "<rootDir>/__mocks__/models.js"
-    }
+    "transform": {}
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
